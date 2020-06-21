@@ -1,5 +1,12 @@
 # Building AI Project
 
+Table of contents:
+- [Workflow of a machine learning project](#workflow-of-a-machine-learning-project)
+- [Workflow of a data science project](#workflow-of-a-data-science-project)
+- [How to choose an AI project](#how-to-choose-an-ai-project)
+- [Working with an AI team](#working-with-an-ai-team)
+--------------
+
 ## Workflow of a machine learning project
 
 [Video](https://www.coursera.org/learn/ai-for-everyone/lecture/z6hU1/workflow-of-a-machine-learning-project)
