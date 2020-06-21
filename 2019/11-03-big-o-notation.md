@@ -3,7 +3,7 @@ reading material
 - 
 
 Takeaway keys:
-imagine we at classroom and too stupid to remeber bring a pen to school, so i need to find the pen.
+imagine we at classroom and too stupid to remember bring a pen to school, so i need to find the pen.
 * n is it amount of students on the class
 
 - O(n2): i quest a student and ask them, "does you have the pen? no? does bob have the pen?" and so on, naming each student. if i dont get the answer from the first student, i move on to the next one. in the worst case i need to ask n^2 questions - questioning each student about each other student.
@@ -14,5 +14,5 @@ imagine we at classroom and too stupid to remeber bring a pen to school, so i ne
 i try to make it simplier:
 - O(n2) will ask question to every students about every other student about the pen
 - O(n) i only ask one person with one question if they doesnt know i move to next student
-- O(log n) i dont look like some idiot asking every student, so i will divide them become half and repeat until only one person on this group
+- O(log n) i dont look like some idiot asking every student, so i will divide them become half and repeat until found my pen and the worst case i need to repeat it until only one person in this group
  
