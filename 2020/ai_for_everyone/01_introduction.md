@@ -1,15 +1,17 @@
-Week 1 Introduction
+# Week 1 Introduction
+
 Table of contents:
 
-- [Introduction](#introduction)
-- [Machine Learning](#machine-learning)
-- [Dataset](#dataset)
-  - [Data is messy](#data-is-messy)
-- [Terminalogi AI](#terminalogi-ai)
-- [What make an AI Company](#what-make-an-ai-company)
-  - [5 Step Internet Company Transformation to AI Company - Playbook](#5-step-internet-company-transformation-to-ai-company---playbook)
-- [What AI __Can__ and __Cannot__ do.](#what-ai-can-and-cannot-do)
-    - [Streght and weaknesses of machine learning](#streght-and-weaknesses-of-machine-learning)
+- [Week 1 Introduction](#week-1-introduction)
+  - [Introduction](#introduction)
+  - [Machine Learning](#machine-learning)
+  - [Dataset](#dataset)
+    - [Data is messy](#data-is-messy)
+  - [Terminalogi AI](#terminalogi-ai)
+  - [What make an AI Company](#what-make-an-ai-company)
+    - [5 Step Internet Company Transformation to AI Company - Playbook](#5-step-internet-company-transformation-to-ai-company---playbook)
+  - [What AI __Can__ and __Cannot__ do.](#what-ai-can-and-cannot-do)
+      - [Streght and weaknesses of machine learning](#streght-and-weaknesses-of-machine-learning)
 
 ## Introduction
 
