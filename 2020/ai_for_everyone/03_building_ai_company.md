@@ -8,6 +8,20 @@ Table of contents:
   - [Roles of an AI team.](#roles-of-an-ai-team)
   - [AI Transformation Playbook](#ai-transformation-playbook)
   - [AI Pitfall to avoid](#ai-pitfall-to-avoid)
+  - [Taking your first step in AI](#taking-your-first-step-in-ai)
+  - [Survey of major AI application areas](#survey-of-major-ai-application-areas)
+    - [Computer Vision](#computer-vision)
+    - [Natural Language Processing](#natural-language-processing)
+    - [Speech](#speech)
+    - [Robotic](#robotic)
+    - [General machine learning](#general-machine-learning)
+  - [Survey of major AI techniques](#survey-of-major-ai-techniques)
+    - [Unsupervised learning](#unsupervised-learning)
+    - [Transfer learning](#transfer-learning)
+    - [Reinforcement Learning](#reinforcement-learning)
+    - [GANs (Generative Adversarial Network)](#gans-generative-adversarial-network)
+    - [Knowledge Graph](#knowledge-graph)
+  - [Google use this to define popular person](#google-use-this-to-define-popular-person)
 
 ## Case Study: Smart Speaker
 
@@ -160,3 +174,113 @@ Five do and dont AI projects
 | Expect AI to work the first time | Plan for AI development to be an iterative process, with multiple attempts needed to succeed |
 | Expect traditional planning processes to apply without changes |  Work with AI team to establish timeline estimates, milestones, KPIs etc |
 | Think you need superstar AI engineers before you can do anything | keep building the team, but get going with the team you have |
+
+----
+
+## Taking your first step in AI
+
+[video](https://www.coursera.org/learn/ai-for-everyone/lecture/5aOMz/taking-your-first-step-in-ai)
+
+- Get friends to learn about AI
+  - This course
+  - Reading group
+- Start brainstroming projects
+  - No projct is to small
+  - Start small and succeed instead big and failed
+- Hire a few ML/DS people to help
+- Hire or appoin an AI leader (VP AI)
+- Discuss with CEO/Board posibilities of AI Transformation
+  - **Will your company be much more valuable and/or more effective if it were good at AI**
+
+
+----------
+
+## Survey of major AI application areas
+
+[video](https://www.coursera.org/learn/ai-for-everyone/lecture/dJEM7/survey-of-major-ai-application-areas-optional)
+
+What ML used in real life applications?
+
+### Computer Vision
+
+- Image classification/Object recognition 
+  - Input image of cat # user
+  - Output this a cat # machine
+- Face recognition - Recognition person face from train Dataset
+- Object detection 
+  - Detect object in image and the position 
+  - Self Driving car will take us input an image and tell us where in the picture different objects are as was what are the types of those objects (car, pedestrian)
+- Image segmentation
+  - Reading x-ray scan, ML will tell us where the liver, where the heart in this image
+  - Tracking - we can track people running across several second in the video
+
+### Natural Language Processing
+
+refers to AI Understand natural language meaning we can comunicate withh machine.
+
+- Text classifaction
+  - we input email and AI tell us is email span or non-spam
+  - Product descrition and AI tell use what category this production
+  - **Sentiment recognition** - AI can what sentiment from the text
+- Information retrieval
+  - Web sarch
+- Name entity recognition
+  - AI can tell us person, location, company & country name in sentence
+- Machine translation
+  - Google Translate
+- Others: parsing, part-of-speech-tagging.
+
+### Speech
+
+- Spech recognition (speech to text)
+  - define word by word audio
+- Trigger word/wakeword detection
+- Speaker ID
+  - Speaker ID is a specialized speech problem where the task is to listen to someone and figure out the identity of the speaker.
+- Speech sysnthesis (text-to-speech, TTS)
+  - Turning text to speech
+  
+### Robotic
+- Perception: figure out what is the world around you 
+- Motion planning: finding a path for the robot to follow
+- Control: sending command to motors to follow a path
+
+### General machine learning
+
+-  Unstructured data (image, audio, text)
+-  Structured data 
+
+
+--------------------
+
+## Survey of major AI techniques
+
+[video](https://www.coursera.org/learn/ai-for-everyone/lecture/qxMIm/survey-of-major-ai-techniques-optional)
+
+There are a lot of AI and machine learning techniques today. And while supervised learning, that is learning A to B mappings, is the most valuable one, at least economically today, there are many other techniques that are worth knowing about.
+
+### Unsupervised learning
+
+- Clustering
+  - A clustering algorithm looks at data like this, and automatically group the data into two clusters or more clusters , and is commonly used for market segmentation.
+
+### Transfer learning
+
+Learn from task A, and use knowledge to help on Task B. 
+
+example:
+We train AI to detect __sedan car__ in image in A City and in B city there are __golf car__ dringin around in the city, **Transfer learning** make AI knowldege __golf car__ from previous tasl.
+
+### Reinforcement Learning
+
+Use a "reward signal" to tell te AI when it is doing well or pooly, It automatically learns to maximize its rewards.
+
+
+### GANs (Generative Adversarial Network)
+
+Synthesize new images from scratch
+
+### Knowledge Graph
+
+Google use this to define popular person
+--------------------
