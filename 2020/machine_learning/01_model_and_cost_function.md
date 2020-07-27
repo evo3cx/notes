@@ -1,8 +1,10 @@
-# Model and Const Function
+# Week 1 - Model and Const Function
+
+This week i learn what model, cost function & basic algorithm we can use in machine learning and how use Linear regression
 
 Table of contents:
 
-- [Model and Const Function](#model-and-const-function)
+- [Week 1 - Model and Const Function](#week-1---model-and-const-function)
   - [Model Representation](#model-representation)
     - [How do we represent h?](#how-do-we-represent-h)
   - [Cost Function](#cost-function)
