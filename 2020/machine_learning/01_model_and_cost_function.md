@@ -64,12 +64,21 @@ This takes an average difference(actually a fancier version of an average) of al
 <img src="./week1_assets/const_function_subscript.png" alt="const function" />
 
 
-To break it apart, it is `1/2x` where `x` is the mean of squares of h($\thetha$) (x[i]) - y[i], or the difference the predicted value and the actual value.
+To break it apart, it is `1/2x` where `x` is the mean of squares of h($\theta$) (x[i]) - y[i], or the difference the predicted value and the actual value.
 
 
 This function is otherwise called the "Squared error function", or "Mean squared error". The mean is haved (1/2) as a convenience for computation of the gradient descent, as the derivative term of the square function will cancel out the `1/2` term. Th following image summarize what the const function does.
 
 <img src="./week1_assets/const_function_summarize.png" alt="cost function summarize" />
+
+<small>Image: formula cost function summarize </small>
+
+
+NOTE: $\theta$(theta) is the weight of our function.
+It can be initialized in various ways, in general it is randomized.
+After that, the training data is used to find the most accurate value of theta.
+
+Then you can feed new data to your function and it will use the training value of theta to make a prediction.
 
 ---------------------
 
@@ -77,7 +86,7 @@ This function is otherwise called the "Squared error function", or "Mean squared
 
 [doc](https://www.coursera.org/learn/machine-learning/supplement/u3qF5/cost-function-intuition-i)
 
-If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by `h(thetha)(x)`) which passes through these scattered data points.
+If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by h($\theta$)(x)) which passes through these scattered data points.
 
 Our objective is to get the best posible line. the best posible line will be such so that the average squared vertical distances of the scattered points from the line will the least. ideally, the line should pass through all the points of our training data set. In such a case, the value of `J(0[0], 0[1])` will be 0, The following example shows the ideal situation where we hae a cost function of 0.
 
@@ -117,7 +126,7 @@ Have some function J($\theta$[0], $\theta$[1])
 Want min J($\theta$[0], $\theta$[1])
 
 __Outline__ :
-- Start with some $\theta$0, $\thehta$
+- Start with some $\theta$[0], $\theta$[n]
 - Keep changing $\theta$[0] $\theta$[1] to reduce J($\theta$[0], $\theta$[1]) until we hopefully end up at a minimum
 
 
@@ -129,7 +138,7 @@ repeat until convergence:
 
 where 
 
-- J=0,1 represents the feature indx number.
+- J=0,1 represents the feature index number.
 - Alpha $\alpha$ term is called the learning rate. And it controls how - big a step we take when updating my parameter theory J.
 
 
