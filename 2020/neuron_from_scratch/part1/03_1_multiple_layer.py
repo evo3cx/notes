@@ -24,6 +24,20 @@ biases2 = [-1, 2, 0.5]
 layer1_outputs = np.dot(inputs, np.array(weights).T) + biases
 layer2_outputs = np.dot(layer1_outputs, np.array(weights2).T) + biases2
 
-print(inputs)
-print(layer1_outputs)
-print(layer2_outputs)
+# print(inputs)
+# print(layer1_outputs)
+# print(layer2_outputs)
+
+
+a = np.array( [
+  [1,2,3],
+  [2,2,2]])
+b = np.array( [
+  [2,2],
+  [2,2],
+  [2,2]])
+
+# print(b.T)
+print(a.shape, b.shape)
+print( np.dot(a , b))
+# print(np.multiply(a,b))
