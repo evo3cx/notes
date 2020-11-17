@@ -17,8 +17,6 @@ class Layer_Dense:
 
   # Forward pass
   def forward(self, inputs)  :
-
-    print(inputs.shape, self.weights.shape)
     # Calculate output values from intpus, weights and biases
     self.output = np.dot(inputs, self.weights) + self.biases
 
@@ -30,10 +28,10 @@ x, y = spiral_data(100, 3)
 dense = Layer_Dense(2, 5)
 
 
-# print(x[:5])
 # Perform a forward pass of our training data through this layer
 dense.forward(x)
 
 # print the first few samples
 print(dense.output[:5])
 
+print(dense.output.shape)
