@@ -43,7 +43,6 @@ class Activation_Softmax:
 
     # Get unnormalized probabilities
     exp_values = np.exp(input - np.max(input, axis=1, keepdims=True))
-    print(exp_values)
 
     # Normalize them for each sample
     probabilities = exp_values / np.sum(exp_values, axis=1, keepdims=True)
@@ -60,7 +59,6 @@ class Loss:
 
     # Calculate sample losses
     sample_losses = self.forward(output, y)
-    print("sample",sample_losses)
 
     # Calculate mean loss
     data_loss = np.mean(sample_losses)
@@ -79,7 +77,8 @@ class Loss_CategoricalCrossentropy(Loss):
 
     # Clip data to prevent division by 0, read in book chapter 5 page 18
     # Clip both sides to not drag mean toward any value
-    y_pred_clipped = np.clip(y_pred, 1e7-7, 1-1e-7)
+    # read more about numpy.clip here: https://numpy.org/doc/stable/reference/generated/numpy.clip.html
+    y_pred_clipped = np.clip(y_pred, 1e-7, 1-1e-7)
 
     # Probabilities for target values - 
     # only if categorical labels
