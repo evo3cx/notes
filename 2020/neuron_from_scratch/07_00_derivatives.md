@@ -18,3 +18,6 @@ Change in `y` /  Change in `x`
 # The Numerical Derivative
 
 Method to calculating the derivative is called **numerical differentiation** - calculating the slope of the tangent line using two infinitely close points.
+
+# The Analytic Derivative
+

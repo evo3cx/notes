@@ -18,6 +18,8 @@ plt.plot(x, y)
 
 # The point and the "close enough" point, 0.001 its value for every step
 p2_delta = 0.001
+
+# We used two points to calculate the derivative at and the "close enough" to it point to calculate the approximation of the derivative.
 x1 = 2
 x2 = x1+p2_delta
 
@@ -50,3 +52,9 @@ print([tangent_line(i) for i in to_plot])
 
 print('Approximate derivative for f(x)', f'where x = {x1} is {approximate_derivative}')
 plt.show()
+
+# you will see the orange line, it's approximate tangent line at x=2 for function f(x) = 2x2.
+# Why we care about this? You will soon find that we care only about the slope of this tangent line but both 
+# visualizing and understanding the tangen line are very imporant. We care about slope of the tangent line because its inform us about the impact that x has on this function at a particular point,
+# referred to as the **instantneous rate of change**, we will use this concept to determine the effect of a specific weight
+# or bias on oeverall los function.
