@@ -7,7 +7,7 @@ weights = [
    [-0.26, -0.27, 0.17, 0.87]
 ]
 
-# STEP 3 neuron 1 layer menggunakan numpy
+#  neuron 1 layer menggunakan numpy
 biases = [2.0, 3.0, 0.5]
 output_np = np.dot(weights, inputs) + biases
 print("output np.dot", output_np)

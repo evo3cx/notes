@@ -1,12 +1,14 @@
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 import numpy as np
 
 
 def f(x):
-  return 2*x
+    return 2*x
+
 
 def nonliearFun(x):
-  return 2*x**2
+    return 2*x**2
+
 
 #  np.arange (start, stop, step) to give us smoother line
 x = np.arange(0, 5, 0.001)
@@ -38,8 +40,11 @@ b = y2 - approximate_derivative*x2
 # it multiple times for different values of x
 # approximate_derivative and b are constant for given function
 # thus calculated once above this function
+
+
 def tangent_line(x):
-  return approximate_derivative*x + b
+    return approximate_derivative*x + b
+
 
 # plotting the tangent line
 # +/- 0.9 to draw the tangen line on our graph (panjang line)
@@ -50,11 +55,12 @@ plt.plot(to_plot, [tangent_line(i) for i in to_plot])
 
 print([tangent_line(i) for i in to_plot])
 
-print('Approximate derivative for f(x)', f'where x = {x1} is {approximate_derivative}')
+print('Approximate derivative for f(x)',
+      f'where x = {x1} is {approximate_derivative}')
 plt.show()
 
 # you will see the orange line, it's approximate tangent line at x=2 for function f(x) = 2x2.
-# Why we care about this? You will soon find that we care only about the slope of this tangent line but both 
+# Why we care about this? You will soon find that we care only about the slope of this tangent line but both
 # visualizing and understanding the tangen line are very imporant. We care about slope of the tangent line because its inform us about the impact that x has on this function at a particular point,
 # referred to as the **instantneous rate of change**, we will use this concept to determine the effect of a specific weight
 # or bias on oeverall los function.

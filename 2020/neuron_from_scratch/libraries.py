@@ -11,10 +11,31 @@ class Layer_Dense:
     # Calculate output values from intpus, weights and biases
     self.output = np.dot(inputs, self.weights) + self.biases
 
+    # store inputs for later use in backpropagation
+    self.inputs = inputs
+
+  # Backward pass,
+  # 1. What purpose of backpropagation? to optimize loss we can calculate how much of an "impact" this neurons bias had
+  # by calculate how much of an "impact" weights had
+  # 2. We can calculate how much of an impact the input into this neuron had. Now if the neuron we are looking at was an input
+  # layer neuron this wouldn't really matter, since we can't update the inputs we get, but if the input into this neuron came from another neuron,
+  # this value basically represents how much of an impact that neuron had on this neuron. 
+  # So we can then use this value (dinputs) to further update the next neurons weights.
+  def backward(self, dvalues):
+    # gradient on parameters
+    self.dweigths = np.dot(self.inputs.T, dvalues)
+    self.dbiases = np.sum(dvalues, axis=0, keepdims=True)
+
+    # Gradient on values
+    self.dinputs = np.dot(dvalues, self.weights.T)
+
+
+
+
 
 # Rectified Linear Activation function is simple than the sigmoid. 
-# It's quite literally y=x, clipped at 0 from the negative side. If x is less than or equal to 0, the y is 0
-# otherwise, y is equal to x.
+# It's quite literally y=x, clipped at 0 from the negative side.
+# If x is less than or equal to 0, the y is 0 otherwise, y is equal to x.
 # y = x <= 0 ? 0 : X
 class Activation_ReLU:
 
@@ -98,3 +119,22 @@ class Loss_CategoricalCrossentropy(Loss):
     # Losses 
     negative_log_likehoods = -np.log(correct_confidences)
     return negative_log_likehoods
+
+  # Implement loss derivative backpropagation in page 45 chapter 9
+  def backward(self, dvalues, y_true):
+    # Number of samples
+    sampels = len(dvalues)
+
+    # Number of labels in every sample
+    # We'll use the first sample to count them
+    labels = len(dvalues[0])
+
+    # If labels are sparse, turm them into one-hot vector
+    if len(y_true.shape) == 1:
+        y_true = np.eye(labels)[y_true]
+
+    # Calculate gradient
+    self.dinputs = -y_true / dvalues
+
+    # Normalize gradient
+    self.dinputs = self.dinputs / sampels
