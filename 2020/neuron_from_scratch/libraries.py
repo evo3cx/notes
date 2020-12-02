@@ -17,19 +17,18 @@ class Layer_Dense:
   # Backward pass,
   # 1. What purpose of backpropagation? to optimize loss we can calculate how much of an "impact" this neurons bias had
   # by calculate how much of an "impact" weights had
-  # 2. We can calculate how much of an impact the input into this neuron had. Now if the neuron we are looking at was an input
-  # layer neuron this wouldn't really matter, since we can't update the inputs we get, but if the input into this neuron came from another neuron,
-  # this value basically represents how much of an impact that neuron had on this neuron. 
+  # 2. We can calculate how much of an impact the input into this neuron had, 
+  # Now if the neuron we are looking at was an input layer neuron, this wouldn't really mattersince we can't update the inputs we get, 
+  # but if the input into this neuron came from another neuron, this value basically represents how much of an impact that neuron had on this neuron. 
+  # 
   # So we can then use this value (dinputs) to further update the next neurons weights.
   def backward(self, dvalues):
     # gradient on parameters
-    self.dweigths = np.dot(self.inputs.T, dvalues)
+    self.dweights = np.dot(self.inputs.T, dvalues)
     self.dbiases = np.sum(dvalues, axis=0, keepdims=True)
 
     # Gradient on values
     self.dinputs = np.dot(dvalues, self.weights.T)
-
-
 
 
 
@@ -41,6 +40,9 @@ class Activation_ReLU:
 
   # forward pass
   def forward(self, input):
+    # Remember input value
+    self.input = input
+
     # in plain python
     # output = []
     # for i in input:
@@ -52,6 +54,14 @@ class Activation_ReLU:
     # Calculate ouput values from input
     self.output = np.maximum(0, input)
 
+  def backward(self, dvalues):
+    # Since we need to modify original variable,
+    # let's make a copy of values first
+    self.dinputs = dvalues.copy()
+
+    # ReLU activation's derivative,
+    self.dinputs[self.input < 1]  = 0 # update element to 0 if value lower than 1
+
 
 # Softmax Formula
 # source: https://en.wikipedia.org/wiki/Softmax_function
@@ -61,6 +71,8 @@ class Activation_Softmax:
 
   # forward pass
   def forward(self, input):
+    # Remember input values
+    self.inputs = input
 
     # Get unnormalized probabilities
     exp_values = np.exp(input - np.max(input, axis=1, keepdims=True))
@@ -69,6 +81,25 @@ class Activation_Softmax:
     probabilities = exp_values / np.sum(exp_values, axis=1, keepdims=True)
 
     self.output = probabilities
+
+  # Backward pass
+  def backward(self, dvalues):
+
+    # Create uninitialized array
+    self.dinputs = np.empty_like(dvalues)
+
+    # Enumerate output and gradients
+    for index, (single_output, single_dvalues) in enumerate(zip(self.output, dvalues)):
+      # Flatten output array
+      single_output = single_output.reshape(-1, 1)
+
+      # Calculate Jacobian matrix of the output and
+      jacobian_matrix = np.diagflat(single_output) - np.dot(single_output, single_output.T)
+
+      # Calculate sample-wise gradient
+      # and add it to the array of sample gradients
+      self.dinputs[index] = np.dot(jacobian_matrix, single_dvalues)
+
 
 # Common loss class
 class Loss:
@@ -138,3 +169,43 @@ class Loss_CategoricalCrossentropy(Loss):
 
     # Normalize gradient
     self.dinputs = self.dinputs / sampels
+
+# Softmax classifier - combined Softmax activation
+# and cross-entropy loss for faster backward step
+class Activation_Softmax_Loss_CategoricalCorssentropy():
+
+  # Create activation and loss function object
+  def __init__(self):
+    self.activation = Activation_Softmax()
+    self.loss = Loss_CategoricalCrossentropy()
+
+  def forward(self, inputs, y_true):
+    # Output layer's activation function
+    self.activation.forward(inputs)
+
+    # Set the output
+    self.output = self.activation.output
+
+    # Calculate and return loss value
+    return self.loss.calculate(self.output, y_true)
+
+  # Backward pass
+  def backward(self, dvalues, y_true):
+
+    # Number of samples 
+    samples = len(dvalues)
+
+    # If labels are one-hot encoded,
+    # turn them into discrete values
+    if len(y_true.shape) == 2 :
+      # argmax with axis 1, will return index the higest value
+      y_true = np.argmax(y_true, axis=1)
+
+    # Copy so we can safely modify
+    self.dinputs = dvalues.copy()
+
+    # Calculate gradient
+    self.dinputs[range(samples), y_true] -= 1
+
+    # Normalize gradient
+    self.dinputs = self.dinputs / samples
