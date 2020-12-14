@@ -60,4 +60,4 @@ def f2():
 time1 = timeit(lambda: f1(), number=10000)
 time2 = timeit(lambda: f2(), number=10000)
 
-print(time2/time1)
+print("the difference between f1() and f2() in second:", time2/time1)

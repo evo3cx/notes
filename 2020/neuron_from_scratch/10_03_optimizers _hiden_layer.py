@@ -37,6 +37,12 @@ dense1 = Layer_Dense(2, 64)
 # Create Relu activation (to be used with Dense Layer)
 activation_relu = Activation_ReLU()
 
+# Create Dense layer with 2 input fatures and 64 output values
+dense_hidden = Layer_Dense(64, 64)
+
+# Create Relu activation (to be used with Dense Layer)
+activation_hidden_relu = Activation_ReLU()
+
 # Create second Dense layer with 64 input features (as we take output of
 # previous layer here) and 3 output values (output values)
 dense2 = Layer_Dense(64, 3)
@@ -45,7 +51,7 @@ dense2 = Layer_Dense(64, 3)
 loss_activation = Activation_Softmax_Loss_CategoricalCorssentropy()
 
 # Create optimizer
-optimizer = Optimizer_SGD(.85)
+optimizer = Optimizer_SGD(1)
 
 # Each full pass through all of the training data is called an epoch
 for epoch in range(10001):
@@ -57,9 +63,17 @@ for epoch in range(10001):
     # takes the output of first dense layer here
     activation_relu.forward(dense1.output)
 
+        # Perform a forward pass of our training data though this layer
+    dense_hidden.forward(activation_relu.output)
+
+    # Perform a forward pass through activation function
+    # takes the output of first dense layer here
+    activation_hidden_relu.forward(dense_hidden.output)
+
+
     # Perform a forward pass through second Dense layer
     # takes output of activation function of first layer as input
-    dense2.forward(activation_relu.output)
+    dense2.forward(activation_hidden_relu.output)
 
     # Perform a forward pass through the activation/loss function
     # takes the output of second dense layer here and returns loss
@@ -83,11 +97,16 @@ for epoch in range(10001):
     # Backward pass/ backpropagation
     loss_activation.backward(loss_activation.output, y)
     dense2.backward(loss_activation.dinputs)
-    activation_relu.backward(dense2.dinputs)
+    
+    activation_hidden_relu.backward(dense2.dinputs)
+    dense_hidden.backward(activation_hidden_relu.dinputs)
+
+    activation_relu.backward(dense_hidden.dinputs)
     dense1.backward(activation_relu.dinputs)
 
     # Then we finnaly use our optimizer to update weights and biases
 
     # Update weight and biases
     optimizer.update_params(dense1)
+    optimizer.update_params(dense_hidden)
     optimizer.update_params(dense2)
