@@ -19,3 +19,5 @@ drelu = dvalues.copy()
 drelu[z < 1]  = 0 # update element to 0 if value lower than 1
 
 print (drelu)
+
+# NOTE: Perbedaan dengan file 09_8_relu_reivative.py adalah pada trick ini nilai dari z, tidak perlu dikalikan dengan dvalues

@@ -19,7 +19,7 @@ drelu = np.zeros_like(z)
 drelu[z > 0]  = 1 # update element to 1 if value bigger than 0
 
 print (drelu)
-# The chain rule
+# The chain rule derivative relu multiply with derivative value
 drelu *= dvalues
 
 print(drelu)

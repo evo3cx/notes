@@ -8,11 +8,11 @@ class Layer_Dense:
 
   # Forward pass
   def forward(self, inputs)  :
-    # Calculate output values from intpus, weights and biases
-    self.output = np.dot(inputs, self.weights) + self.biases
-
     # store inputs for later use in backpropagation
     self.inputs = inputs
+
+    # Calculate output values from intpus, weights and biases
+    self.output = np.dot(inputs, self.weights) + self.biases
 
   # Backward pass,
   # 1. What purpose of backpropagation? to optimize loss we can calculate how much of an "impact" this neurons bias had
@@ -60,7 +60,7 @@ class Activation_ReLU:
     self.dinputs = dvalues.copy()
 
     # ReLU activation's derivative,
-    self.dinputs[self.input < 1]  = 0 # update element to 0 if value lower than 1
+    self.dinputs[self.input <= 0]  = 0 # update element to 0 if value lower than 0
 
 
 # Softmax Formula
@@ -93,7 +93,7 @@ class Activation_Softmax:
       # Flatten output array
       single_output = single_output.reshape(-1, 1)
 
-      # Calculate Jacobian matrix of the output and
+      # Calculate Jacobian matrix of the output
       jacobian_matrix = np.diagflat(single_output) - np.dot(single_output, single_output.T)
 
       # Calculate sample-wise gradient
@@ -130,7 +130,7 @@ class Loss_CategoricalCrossentropy(Loss):
     # Clip data to prevent division by 0, read in book chapter 5 page 18
     # Clip both sides to not drag mean toward any value
     # read more about numpy.clip here: https://numpy.org/doc/stable/reference/generated/numpy.clip.html
-    y_pred_clipped = np.clip(y_pred, 1e-7, 1-1e-7)
+    y_pred_clipped = np.clip(y_pred, 1e-7, 1 - 1e-7)
 
     # Probabilities for target values - 
     # only if categorical labels
