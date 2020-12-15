@@ -51,7 +51,7 @@ dense2 = Layer_Dense(64, 3)
 loss_activation = Activation_Softmax_Loss_CategoricalCorssentropy()
 
 # Create optimizer
-optimizer = Optimizer_SGD(1)
+optimizer = Optimizer_SGD(.85)
 
 # Each full pass through all of the training data is called an epoch
 for epoch in range(10001):
@@ -63,13 +63,12 @@ for epoch in range(10001):
     # takes the output of first dense layer here
     activation_relu.forward(dense1.output)
 
-        # Perform a forward pass of our training data though this layer
+    # Perform a forward pass of our training data though this layer
     dense_hidden.forward(activation_relu.output)
 
     # Perform a forward pass through activation function
     # takes the output of first dense layer here
     activation_hidden_relu.forward(dense_hidden.output)
-
 
     # Perform a forward pass through second Dense layer
     # takes output of activation function of first layer as input
@@ -97,7 +96,7 @@ for epoch in range(10001):
     # Backward pass/ backpropagation
     loss_activation.backward(loss_activation.output, y)
     dense2.backward(loss_activation.dinputs)
-    
+
     activation_hidden_relu.backward(dense2.dinputs)
     dense_hidden.backward(activation_hidden_relu.dinputs)
 

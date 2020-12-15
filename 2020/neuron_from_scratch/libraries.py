@@ -209,3 +209,42 @@ class Activation_Softmax_Loss_CategoricalCorssentropy():
 
     # Normalize gradient
     self.dinputs = self.dinputs / samples
+
+
+# Optimizer Stochastic gradient descent Chapter 10
+class Optimizer_SGD:
+    # Initialize optimizer - set settings,
+    #  learning rate of 1. is default for this optimizer
+    def __init__(self, learning_rate=1.0):
+        self.learning_rate = learning_rate
+
+    # Update parameters
+    def update_params(self, layer):
+        # Our goal to minimize value and gradient point towards steepest function ascent,
+        # thus we substractd learning rate
+        layer.weights += -self.learning_rate * layer.dweights
+        layer.biases += -self.learning_rate * layer.dbiases
+
+
+# Optimizer_SGD with learning rate decay, Chapter 10 page 30
+class Optimizer_SGD_version2:
+  # Initialize optimizer - set settings,
+  # learning rate of 1. is default for this optimizer
+  def __init__(self, learning_rate=1.0, decay=0.):
+    self.starting_learing_rate = learning_rate
+    self.current_learning_rate = learning_rate
+    self.decay = decay
+    self.iterations = 0
+
+  # call once before any parameter updates
+  def pre_update_params(self):
+    if self.decay:
+      self.current_learning_rate = self.starting_learing_rate * (1. / (1 + self.decay * self.iterations))
+
+  # Update parameters
+  def update_params(self, layer):
+    layer.weights += -self.current_learning_rate * layer.dweights
+    layer.biases += -self.current_learning_rate * layer.dbiases
+
+  def post_update_params(self):
+    self.iterations += 1
