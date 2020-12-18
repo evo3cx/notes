@@ -1,4 +1,4 @@
-# PAGE 44
+# PAGE 53
 import numpy as np
 import matplotlib.pyplot as plt
 import nnfs
@@ -10,6 +10,7 @@ from libraries import Loss_CategoricalCrossentropy
 from libraries import Activation_ReLU
 from libraries import Layer_Dense
 from libraries import Optimizer_SGD_version3
+from libraries import Optimizer_AdaGrad
 
 
 # initialize nnfs dataset
@@ -33,7 +34,7 @@ dense2 = Layer_Dense(64, 3)
 loss_activation = Activation_Softmax_Loss_CategoricalCorssentropy()
 
 # Create optimizer kita menggunakan decay dan momentum untuk mendapatkan LR global minimum
-optimizer = Optimizer_SGD_version3(learning_rate=.9,decay=1e-3,  momentum=0.9)
+optimizer = Optimizer_AdaGrad(decay=1e-4)
 
 # Train in loop
 for epoch in range(10001):

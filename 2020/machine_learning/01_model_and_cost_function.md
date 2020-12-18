@@ -9,7 +9,7 @@ Table of contents:
     - [How do we represent h?](#how-do-we-represent-h)
   - [Cost Function](#cost-function)
   - [Cost Function - Intuition I](#cost-function---intuition-i)
-  - [Cost  Function - Intuiton II](#cost-function---intuiton-ii)
+  - [Cost  Function - Intuiton II](#cost--function---intuiton-ii)
   - [Gradient Descent Algorithm](#gradient-descent-algorithm)
   - [Gradient Descent Intuition](#gradient-descent-intuition)
   - [Gradient Descent For Linear Regression](#gradient-descent-for-linear-regression)
