@@ -168,6 +168,7 @@ for epoch in range(10001):
     if not epoch % 100:
         print(f'epoch: {epoch}, ' +
               f'acc: {accuracy:.3f}, ' +
+              f'regulation lost {regularization_loss:.3f}' +
               f'loss: {loss:.3f}, ' +
               f'lr: {optimizer.current_learning_rate}')
 
