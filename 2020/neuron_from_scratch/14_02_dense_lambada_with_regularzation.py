@@ -137,7 +137,7 @@ nnfs.init()
 
 
 # Create dataset
-x, y = spiral_data(samples=100, classes=3)
+x, y = spiral_data(samples=1000, classes=3)
 
 #  Create dense layer with 2 input features and 64 output valus
 dense1 = Layer_Dense(2, 512, weight_regularizer_l2=5e-4, bias_regularizer_l2=5e-4)
@@ -156,7 +156,7 @@ loss_activation = Activation_Softmax_Loss_CategoricalCorssentropy()
 optimizer = Optimizer_Adam(decay=5e-7, learning_rate=0.06,)
 
 # Train in loop
-for epoch in range(10001):
+for epoch in range(10000):
 
     # Perform a forward pass of our training data through this layer
     dense1.forward(x)
