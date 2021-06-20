@@ -11,8 +11,11 @@ data = pd.read_csv(sample_path+'/Salary_Data.csv')
 X = data['YearsExperience']
 y = data['Salary']
 
+
+X = X.to_numpy()
 # mengubah bentuk atribut from 1D to 2D
 X = X[:,np.newaxis]
+print(X)
 
 # membangun model dengan parameter C, gamma, dan kernel
 model = SVR(C=10000, gamma=0.05, kernel='rbf')
