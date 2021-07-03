@@ -101,7 +101,6 @@ model.summary()
 model.save(sample_path+'/15.ts_first_model')
 
 
-
 # let's try with new image we got from google search
 image_clean1 = image.load_img(sample_path+'/clean1.jpeg', target_size=(150, 150))
 image_clean2 = image.load_img(sample_path+'/clean2.jpeg', target_size=(150, 150))
