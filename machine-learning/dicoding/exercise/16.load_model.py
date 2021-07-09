@@ -1,6 +1,5 @@
 import numpy as np
 import tensorflow as tf
-import zipfile
 import os
 from keras.preprocessing import image
 from tensorflow.keras import models
